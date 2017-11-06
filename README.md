@@ -8,7 +8,7 @@ rails s
 
 # pages
 ```
-/Users/new
+/participants/new
 ```
 
 # pushing
