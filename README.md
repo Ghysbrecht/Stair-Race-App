@@ -1,3 +1,29 @@
+# install
+
+```
+bundle install
+rails db:migrate
+rails s
+```
+
+# pages
+```
+/Users/new
+```
+
+# pushing
+
+```
+git pull
+-- resolve merge conflicts if needed 
+git push
+```
+
+
+
+
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the
