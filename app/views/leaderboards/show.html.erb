@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<table>
+<% @entrys.each do |entry| %>
+<tr>
+  <td><%= entry.game %></td>
+  <td><%= entry.participant.name %></td>
+  <td><%= entry.starttijd.strftime("%H:%M:%S") %></td>
+  <td><%= entry.stoptijd.strftime("%H:%M:%S") %></td>
+  <td><%= entry.timediff.strftime("%H:%M:%S") %></td>
+  <td><%= %></td>
+  <br />
+</tr>
+<% end %>
+</table>
+
+
+<!-- 
+<p>
+  <strong>Stoptijd:</strong>
+  <%= @leaderboard.stoptijd %>
+</p>
+
+<p>
+  <strong>Starttijd:</strong>
+  <%= @leaderboard.starttijd %>
+</p>
+
+<p>
+  <strong>Participant:</strong>
+  <%= @leaderboard.participant %>
+</p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @leaderboard.game %>
+</p>
+-->
+<%= link_to 'Edit', edit_leaderboard_path(@leaderboard) %> |
+<%= link_to 'Back', leaderboards_path %>
