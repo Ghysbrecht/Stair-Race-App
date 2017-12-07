@@ -4,9 +4,9 @@ class LeaderboardsController < ApplicationController
   # GET /leaderboards
   # GET /leaderboards.json
   def index
-    #@leaderboards = Leaderboard.all
-    @leaderboards = Leaderboard.group(:game).count
-    logger.debug { @leaderboards }
+    @leaderboards = Leaderboard.all
+    @leaderboards = @leaderboards.sort { |a,b| a.timediff <=> b.timediff }
+    # @leaderboards = Leaderboard.group(:game).count
   end
 
   # GET /leaderboards/1
