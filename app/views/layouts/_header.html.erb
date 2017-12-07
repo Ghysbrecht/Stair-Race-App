@@ -4,13 +4,13 @@
     <a href="#" class="brand-logo center">StairRace</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><%= link_to "Home",   '/' %></li>
-        <li><%= link_to "Scoreboard",   'leaderboard' %></li>
+        <li><%= link_to "Scoreboard",   '/leaderboard' %></li>
         <% if logged_in?   %>
         
-          <li><%= link_to "Add participants", 'signup' %></li>
-          <li><%= link_to "Log out", 'logout', :method=>'delete'%></li>
+          <li><%= link_to "Add participants", '/signup' %></li>
+          <li><%= link_to "Log out", '/logout', :method=>'delete'%></li>
         <% else %>
-        <li><%= link_to "login", 'login' %>
+        <li><%= link_to "login", '/login' %>
         <% end %>
     </ul>
   </div>
