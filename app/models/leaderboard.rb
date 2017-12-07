@@ -6,4 +6,4 @@ end
 def participant_name
   return Participant.find(participant_id).name
 end
-end 
+end

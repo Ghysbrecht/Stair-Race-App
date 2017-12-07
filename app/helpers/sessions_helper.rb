@@ -16,7 +16,7 @@ module SessionsHelper
 
     # Logs out the current user.
     def log_out
-      session.delete(:id)
+      session.delete(:admin_id)
       @current_admin = nil
     end
   end

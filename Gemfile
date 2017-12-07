@@ -56,3 +56,7 @@ gem 'material_icons'
 #mqtt shit etc...
 
 gem 'mqtt', :git => 'https://github.com/njh/ruby-mqtt.git'
+
+# querying the j
+
+gem 'jquery-rails'

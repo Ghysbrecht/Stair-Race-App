@@ -1,5 +1,5 @@
 class LeaderboardsController < ApplicationController
-    before_action :set_leaderboard, only: [:show, :edit, :update, :destroy]
+   # before_action :set_leaderboard, only: [:show, :edit, :update, :destroy]
 
   # GET /leaderboards
   # GET /leaderboards.json
@@ -60,10 +60,15 @@ class LeaderboardsController < ApplicationController
   # DELETE /leaderboards/1
   # DELETE /leaderboards/1.json
   def destroy
-    @leaderboard.destroy
-    respond_to do |format|
-      format.html { redirect_to leaderboards_url, notice: 'Leaderboard was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_admin.nil?
+      redirect_to '/login'
+    else
+      Leaderboard.delete_all
+      #@leaderboard.destroy
+      respond_to do |format|
+        format.html { redirect_to leaderboards_url, notice: 'Leaderboard was successfully emptyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
