@@ -1,0 +1,37 @@
+<%= form_with(model: leaderboard, local: true) do |form| %>
+  <% if leaderboard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(leaderboard.errors.count, "error") %> prohibited this leaderboard from being saved:</h2>
+
+      <ul>
+      <% leaderboard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :stoptijd %>
+    <%= form.time_select :stoptijd, id: :leaderboard_stoptijd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :starttijd %>
+    <%= form.time_select :starttijd, id: :leaderboard_starttijd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :participant_id %>
+    <%= form.text_field :participant_id, id: :leaderboard_participant_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :game %>
+    <%= form.number_field :game, id: :leaderboard_game %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

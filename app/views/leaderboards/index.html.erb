@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Leaderboards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>game</th>
+      <th>players</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% value =0 %>
+    <% @leaderboards.each do |leaderboard| %>
+      <tr>
+        <% value = value +1 %>
+        <td><%= value %></td>
+        <td><%= leaderboard[1] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Leaderboard', new_leaderboard_path %>

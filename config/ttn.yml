@@ -1,0 +1,5 @@
+server:
+    host: 'eu.thethings.network'
+    port: 1883
+    username: 'vivesiotstairrace'
+    password: 'ttn-account-v2.xxaS21FSvnOCqkktFrEstn2AE0L2tawRuV2Vm-8PZSc'
