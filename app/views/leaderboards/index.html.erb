@@ -5,8 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>game</th>
+      <th>postition</th>
       <th>players</th>
+      <th>starttijd</th>
+      <th>stoptijd</th>
+      <th>seconden</th>
     </tr>
   </thead>
 
@@ -16,7 +19,10 @@
       <tr>
         <% value = value +1 %>
         <td><%= value %></td>
-        <td><%= leaderboard[1] %></td>
+        <td><%= leaderboard.participant_name %></td>
+        <td><%= leaderboard.starttijd %></td>
+        <td><%= leaderboard.stoptijd %></td>
+        <td><%= leaderboard.timediff %></td>
       </tr>
     <% end %>
   </tbody>

@@ -3,7 +3,7 @@ class LeaderboardsController < ApplicationController
 
   # GET /leaderboards
   # GET /leaderboards.json
-  def index
+  def index     # gives full leaderboard
     @leaderboards = Leaderboard.all
     @leaderboards = @leaderboards.sort { |a,b| a.timediff <=> b.timediff }
     # @leaderboards = Leaderboard.group(:game).count
@@ -11,8 +11,11 @@ class LeaderboardsController < ApplicationController
 
   # GET /leaderboards/1
   # GET /leaderboards/1.json
-  def show
-    @entrys = Leaderboard.where(:game => params[:id])
+  def show     # this gives the top xx for /leaderboards/xx
+    @leaderboards = Leaderboard.all
+    @leaderboards = @leaderboards.sort { |a,b| a.timediff <=> b.timediff }
+    @leaderboards = @leaderboards.first(params[:id].to_i)
+    render :index
   end
 
   # GET /leaderboards/new
