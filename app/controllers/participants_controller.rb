@@ -1,6 +1,6 @@
 class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
-
+  protect_from_forgery with: :exception, unless: -> { request.format.json? }
   helper_method :current_user
   # GET /participants
   # GET /participants.json
@@ -15,11 +15,11 @@ class ParticipantsController < ApplicationController
 
   # GET /participants/new
   def new
-    if current_admin.nil?
-      redirect_to '/login'
-    else
+    #if current_admin.nil?
+    #  redirect_to '/login'
+    #else
       @participant = Participant.new
-    end
+    #end
   end
 
   # GET /participants/1/edit
