@@ -15,11 +15,11 @@ class ParticipantsController < ApplicationController
 
   # GET /participants/new
   def new
-    #if current_admin.nil?
-    #  redirect_to '/login'
-    #else
+    if current_admin.nil?
+      redirect_to '/login'
+    else
       @participant = Participant.new
-    #end
+    end
   end
 
   # GET /participants/1/edit
@@ -32,8 +32,10 @@ class ParticipantsController < ApplicationController
   # POST /participants
   # POST /participants.json
   def create
-    if current_admin.nil?
-      redirect_to '/login'
+    if !request.format.json?
+      if current_admin.nil?
+        redirect_to '/login'
+      end
     else
       @participant = Participant.new(participant_params)
 
