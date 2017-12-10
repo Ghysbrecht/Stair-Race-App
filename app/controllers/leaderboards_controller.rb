@@ -3,15 +3,15 @@ class LeaderboardsController < ApplicationController
 
   # GET /leaderboards
   # GET /leaderboards.json
-  def index     # gives full leaderboard
-    @leaderboards = Leaderboard.all
+  def index # gives full leaderboard
+    @leaderboards = Leaderboard.where.not(stoptijd: nil)
     @leaderboards = @leaderboards.sort_by(&:timediff)
     # @leaderboards = Leaderboard.group(:game).count
   end
 
   # GET /leaderboards/1
   # GET /leaderboards/1.json
-  def show     # this gives the top xx for /leaderboards/xx
+  def show # this gives the top xx for /leaderboards/xx
     @leaderboards = Leaderboard.all
     @leaderboards = @leaderboards.sort_by(&:timediff)
     @leaderboards = @leaderboards.first(params[:id].to_i)
@@ -31,7 +31,7 @@ class LeaderboardsController < ApplicationController
   # POST /leaderboards.json
   def create
     @leaderboard = Leaderboard.new(leaderboard_params)
-
+    logger.debug { leaderboard_params }
     respond_to do |format|
       if @leaderboard.save
         format.html { redirect_to @leaderboard, notice: 'Leaderboard was successfully created.' }
