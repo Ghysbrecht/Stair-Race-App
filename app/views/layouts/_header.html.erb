@@ -1,13 +1,26 @@
 <nav>
-<div class="container">
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">StairRace</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%= link_to "Home",   '#' %></li>
-        <li><%= link_to "Scoreboard",   '#' %></li>
-        <li><%= link_to "Add participants", '#' %></li>
-    </ul>
-  </div>
+<div class="nav-wrapper">
+  <a href="#!" class="brand-logo"><i class="material-icons">directions_run</i>StairRace</a>
+  <ul class="right hide-on-med-and-down">
+    <li>
+      <%= link_to leaderbooards_path %>
+        <i class="material-icons">reorder</i>
+    </li>
+    <li>
+      <%= link_to partisipants_path %>
+        <i class="material-icons">person</i>
+    </li>
+    <li>
+    <% if session[:id] %>
+      <%= link_to participants/new_path %>
+        <i class="material-icons">person_add</i>
+    <% else %>
+      <%= link_to login_path %>
+        <i class="material-icons">lock</i>
+    <% end %>
+    </li>
+  </ul>
+
+</a>
 </div>
 </nav>
-    
