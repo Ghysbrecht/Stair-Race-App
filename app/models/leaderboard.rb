@@ -1,7 +1,7 @@
 class Leaderboard < ApplicationRecord
   belongs_to :participant
   def timediff
-    if stoptijd = nil
+    if stoptijd != nil
       return Time.at(stoptijd - starttijd).utc.to_i
     else 
       return 0 # don't break stuff
@@ -23,13 +23,14 @@ class Leaderboard < ApplicationRecord
       case message['dev_id']
       when 'starttimer'
         puts 'starttimer'
-        self.starttijd = Time.new(message['payload_fields']['time']).utc
+        self.starttijd = Time.parse(message['payload_fields']['time'])
+        puts self.inspect
         self.save
       when 'finishtimer'
         puts 'finishtimer'
         entry = Leaderboard.where(participant_id: self.participant_id).order("created_at").last
         entry.update_attributes(
-          stoptijd: Time.new(message['payload_fields']['time']).utc
+          stoptijd: Time.parse(message['payload_fields']['time']).utc
         )
       else
         logger.error { 'TTN: could not find correct device ID' }
