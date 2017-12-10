@@ -5,8 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>game</th>
+      <th>postition</th>
       <th>players</th>
+      <th>starttijd</th>
+      <th>stoptijd</th>
+      <th>seconden</th>
     </tr>
   </thead>
 
@@ -16,12 +19,32 @@
       <tr>
         <% value = value +1 %>
         <td><%= value %></td>
-        <td><%= leaderboard[1] %></td>
+        <td><%= leaderboard.participant_name %></td>
+        <td><%= leaderboard.starttijd %></td>
+        <td><%= leaderboard.stoptijd %></td>
+        <td><%= leaderboard.timediff %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<% if current_admin != nil %>
+<link href="//cdn.bri.io/mbox/dist/mbox-0.0.3.min.css" rel="stylesheet">
+<script src="//cdn.bri.io/mbox/dist/mbox-0.0.3.min.js"></script>
 
-<%= link_to 'New Leaderboard', new_leaderboard_path %>
+<%= link_to 'New entry', new_leaderboard_path %>
+<a id="newgame">empty leaderboard
+   <script>
+    document.getElementById("newgame").addEventListener("click", function(event){
+      event.preventDefault()
+      var $link = $(this);
+      mbox.confirm('this will clear the whole leaderboard, there is no undo, are you sure? ', function(yes) {
+        if (yes) {
+            console.log('clearing leaderboard')
+            window.location.href = '/newgame'
+        }
+      }); })  
+    </script>
+</a>
+<% end %>

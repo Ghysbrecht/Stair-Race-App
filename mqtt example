@@ -1,0 +1,33 @@
+{  
+   "app_id":"vivesiotstairrace",
+   "dev_id":"starttimer",
+   "hardware_serial":"00D671694C8DEE3B",
+   "port":1,
+   "counter":6,
+   "payload_raw":"EgwRAADeD8HYAAAAAA==",
+   "payload_fields":{  
+      "time":"18:12:17.0",
+      "uid":"DEFC1D800000000"
+   },
+   "metadata":{  
+      "time":"2017-12-05T17:12:16.152432277Z",
+      "frequency":868.5,
+      "modulation":"LORA",
+      "data_rate":"SF7BW125",
+      "coding_rate":"4/5",
+      "gateways":[  
+         {  
+            "gtw_id":"0000024b080309d7",
+            "gtw_trusted":true,
+            "timestamp":173540195,
+            "time":"",
+            "channel":2,
+            "rssi":-116,
+            "snr":0.75,
+            "rf_chain":1,
+            "latitude":51.194115,
+            "longitude":3.217996
+         }
+      ]
+   }
+}

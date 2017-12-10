@@ -1,18 +1,21 @@
 class LeaderboardsController < ApplicationController
-    before_action :set_leaderboard, only: [:show, :edit, :update, :destroy]
+   # before_action :set_leaderboard, only: [:show, :edit, :update, :destroy]
 
   # GET /leaderboards
   # GET /leaderboards.json
-  def index
-    #@leaderboards = Leaderboard.all
-    @leaderboards = Leaderboard.group(:game).count
-    logger.debug { @leaderboards }
+  def index # gives full leaderboard
+    @leaderboards = Leaderboard.where.not(stoptijd: nil)
+    @leaderboards = @leaderboards.sort_by(&:timediff)
+    # @leaderboards = Leaderboard.group(:game).count
   end
 
   # GET /leaderboards/1
   # GET /leaderboards/1.json
-  def show
-    @entrys = Leaderboard.where(:game => params[:id])
+  def show # this gives the top xx for /leaderboards/xx
+    @leaderboards = Leaderboard.all
+    @leaderboards = @leaderboards.sort_by(&:timediff)
+    @leaderboards = @leaderboards.first(params[:id].to_i)
+    render :index
   end
 
   # GET /leaderboards/new
@@ -28,7 +31,7 @@ class LeaderboardsController < ApplicationController
   # POST /leaderboards.json
   def create
     @leaderboard = Leaderboard.new(leaderboard_params)
-
+    logger.debug { leaderboard_params }
     respond_to do |format|
       if @leaderboard.save
         format.html { redirect_to @leaderboard, notice: 'Leaderboard was successfully created.' }
@@ -57,10 +60,15 @@ class LeaderboardsController < ApplicationController
   # DELETE /leaderboards/1
   # DELETE /leaderboards/1.json
   def destroy
-    @leaderboard.destroy
-    respond_to do |format|
-      format.html { redirect_to leaderboards_url, notice: 'Leaderboard was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_admin.nil?
+      redirect_to '/login'
+    else
+      Leaderboard.delete_all
+      #@leaderboard.destroy
+      respond_to do |format|
+        format.html { redirect_to leaderboards_url, notice: 'Leaderboard was successfully emptyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

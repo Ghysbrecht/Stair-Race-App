@@ -5,9 +5,10 @@ class SessionsController < ApplicationController
 
   def create
     admin = Admin.find_by(name: params[:session][:name])
-    if admin #&& admin.authenticate(params[:session][:password])
+    logger.debug { "admin:" + admin.inspect }
+    if admin && admin.authenticate(params[:session][:password])
       log_in admin
-      redirect_to admin
+      redirect_to signup_url
     else
       flash.now[:danger] = 'Invalid name/password combination'
       render 'new'
@@ -15,5 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    log_out
+    redirect_to '/'
   end
 end

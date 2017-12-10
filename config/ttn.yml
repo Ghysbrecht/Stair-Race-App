@@ -1,0 +1,3 @@
+server:
+    host: 'labict.be'
+    port: 1883

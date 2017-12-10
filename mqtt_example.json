@@ -1,0 +1,35 @@
+{
+  "app_id": "vivesiotstairrace",
+  "dev_id": "signuptimer",
+  "hardware_serial": "000F02F977856D89",
+  "port": 1,
+  "counter": 0,
+  "confirmed": true,
+  "is_retry": true,
+  "payload_raw": "DBctoQIBAgMEBQYHCA==",
+  "payload_fields": { "time": "12:23:45.673", "uid": "0102030405060708" },
+  "metadata": {
+    "time": "2017-11-20T10:28:46.896584584Z",
+    "frequency": 868.1,
+    "modulation": "LORA",
+    "data_rate": "SF9BW125",
+    "coding_rate": "4/5",
+    "gateways": [
+      {
+        "gtw_id": "0000024b080309d7",
+        "gtw_trusted": true,
+        "timestamp": 2814023460,
+        "time": "",
+        "channel": 0,
+        "rssi": -121,
+        "snr": -10.5,
+        "rf_chain": 1,
+        "latitude": 51.194115,
+        "longitude": 3.217996
+      }
+    ]
+  }
+}
+
+
+{"app_id"=>"vivesiotstairrace", "dev_id"=>"signuptimer", "hardware_serial"=>"000F02F977856D89", "port"=>1, "counter"=>0, "confirmed"=>true, "is_retry"=>true, "payload_raw"=>"DBctoQIBAgMEBQYHCA==", "payload_fields"=>{"time"=>"12:23:45.673", "uid"=>"0102030405060708"}, "metadata"=>{"time"=>"2017-11-20T10:28:46.896584584Z", "frequency"=>868.1, "modulation"=>"LORA", "data_rate"=>"SF9BW125", "coding_rate"=>"4/5", "gateways"=>[{"gtw_id"=>"0000024b080309d7", "gtw_trusted"=>true, "timestamp"=>2814023460, "time"=>"", "channel"=>0, "rssi"=>-121, "snr"=>-10.5, "rf_chain"=>1, "latitude"=>51.194115, "longitude"=>3.217996}]}}
