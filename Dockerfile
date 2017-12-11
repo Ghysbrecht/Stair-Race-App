@@ -13,16 +13,14 @@ WORKDIR /tmp
 ADD ./Gemfile Gemfile
 ADD ./Gemfile.lock Gemfile.lock
 RUN bundle install
-RUN rm db/development.*; exit 0
-RUN rails db:migrate
-RUN rails db:seed
 
 ENV APP_ROOT /workspace
 RUN mkdir -p $APP_ROOT
 WORKDIR $APP_ROOT
 COPY . $APP_ROOT
+COPY ./db/docker.sqlite3 $APP_ROOT/db/development.sqlite3
+COPY ./db/docker.sqlite3 $APP_ROOT/db/production.sqlite3
+run rails db:migrate
 
-EXPOSE  3000
-CMD ["rails", "db:migrate"]
-CMD ["rails", "db:seed"]
+EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
